@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>wobble test</title>
+  <link rel="stylesheet" href="./style.css">
+
+  <link rel="icon" href="favicon.png" type="image/icon">
+</head>
+<body>
+  <audio id="bgMusic" loop>
+    <source src="audio/bgmusic.mp3" type="audio/mpeg">  
+  </audio>
+  <audio id="sliderSound" src="audio/slider.mp3"></audio>
+  <audio id="textSound" src="audio/textarea.mp3"></audio>
+  <audio id="checkSound" src="audio/checkbox.mp3"></audio>
+  <audio id="miscSound" src="audio/misc.mp3"></audio>
+  <div class="wobblecontainer"><div class="wobble">wobble text</div></div>
+  <div class="overlay" id="paper"><img src="images/paperbg.gif" onerror="this.onerror=null; this.src='images/paperbg.png'" style="filter: drop-shadow(0px 0px 0px rgba(0,0,0,0)); width: 100vw; height: 100vh; object-fit: cover;"/></div>
+  <div id="allSettings" style="display: none;">
+  <button onclick="hideSettings()">hide settings</button>
+  <button onclick="reset()"><b>reset everything</b></button>
+
+<div class="spacer">------------------------------------------------------------------------</div>
+
+    <textarea id="customtext" class = "noresize" rows="1" cols="40">wobble test</textarea>
+
+    <br>
+
+    <span><a target="_" href="https://www.youtube.com/watch?v=6tRPqm1_edY">music:</a> </span><input type="checkbox" id="musicCheck" style="transform: scale(1.5);" checked>
+    
+    <br>
+
+    <span>wobble audiowaves: </span><input type="checkbox" id="wavesCheck" style="transform: scale(1.5);" checked>
+
+    <br>
+
+    <span>input SFX: </span><input type="checkbox" id="sfxCheck" style="transform: scale(1.5);" checked>
+
+    <div class="spacer">------------------------------------------------------------------------</div>
+
+    <span class="slidecontainer">
+      <input type="range" min="-100" max="100" value="5" id="xSlider">
+    </span>
+    <span>x wobble: <textarea id="xOutput" class = "noresize" rows="1" cols="10">5</textarea></span>
+    
+    <br>
+
+    <span class="slidecontainer">
+      <input type="range" min="-100" max="100" value="5" id="ySlider">
+    </span>
+    <span>y wobble: <textarea id="yOutput" class = "noresize" rows="1" cols="10">5</textarea></span>
+    
+    <br>
+
+    <span class="slidecontainer">
+      <input type="range" min="0" max="2" value="1" id="xScaleSlider" step="0.1">
+    </span>
+    <span>x scale: <textarea id="xScaleOutput" class = "noresize" rows="1" cols="10">1</textarea></span>
+    
+    <br>
+
+    <span class="slidecontainer">
+      <input type="range" min="0" max="2" value="1" id="yScaleSlider" step="0.1">
+    </span>
+    <span>y scale: <textarea id="yScaleOutput" class = "noresize" rows="1" cols="10">1</textarea></span>
+    
+    <br>
+
+    <span class="slidecontainer">
+      <input type="range" min="-90" max="90" value="5" id="rotSlider">
+    </span>
+    <span>rotation wobble: <textarea id="rotOutput" class = "noresize" rows="1" cols="10">5</textarea></span>
+    
+    <div class="spacer">------------------------------------------------------------------------</div>
+
+    <span class="slidecontainer">
+      <input type="range" min="0" max="150" value="50" id="delaySlider">
+    </span>
+    <span>animation delay (ms): <textarea id="delayOutput" class = "noresize" rows="1" cols="10">50</textarea></span>
+
+    <br>
+
+    <span class="slidecontainer">
+      <input type="range" min="0" max="2" value="1" id="lengthSlider" step="0.01">
+    </span>
+    <span>animation length (s): <textarea id="lengthOutput" class = "noresize" rows="1" cols="10">1</textarea></span>
+
+    <br>
+
+    <span class="slidecontainer">
+      <input type="range" min="0" max="100" value="10" id="randSlider">
+    </span>
+    <span>randomness: <textarea id="randOutput" class = "noresize" rows="1" cols="10">10</textarea></span>
+    
+    <br>
+
+    <span class="slidecontainer">
+      <input type="range" min="0.01" max="1" value="0.9" id="randSpeedSlider" step="0.01">
+    </span>
+    <span>randomness speed (s): <textarea id="randSpeedOutput" class = "noresize" rows="1" cols="10">0.9</textarea></span>
+
+    <div class="spacer">------------------------------------------------------------------------</div>
+
+    <span id = "colorSpan">color: <input type="color" id="color" value="#000000"/></span>
+    <span id="gradient" style="display: none;">colors: 
+      <input type="color" id="colors1" value="#ff0000"/>
+      <input type="color" id="colors2" value="#ffff00"/>
+      <input type="color" id="colors3" value="#00ff00"/>
+      <input type="color" id="colors4" value="#0000ff"/>
+    </span>
+    <br>
+    <span>gradients: </span><input type="checkbox" id="gradientCheck" style="transform: scale(1.5);"/>
+
+    <br>
+
+    <span>drop shadow color: <input type="color" id="shadowColor" value="#000000"/></span>   
+
+    <br>
+
+    <span class="slidecontainer">
+      <input type="range" min="0" max="10" value="5" id="gradientSlider" step="0.1">
+    </span>
+    <span>gradient speed (s): <textarea id="gradientOutput" class = "noresize" rows="1" cols="10">5</textarea></span>
+
+    <br>
+
+    <span class="slidecontainer">
+      <input type="range" min="40" max="120" value="80" id="sizeSlider">
+    </span>
+    <span>font size (px): <textarea id="sizeOutput" class = "noresize" rows="1" cols="10">80</textarea></span>
+
+    <br>
+
+    <span class="slidecontainer">
+      <input type="range" min="-10" max="10" value="3" id="shadowSlider">
+    </span>
+    <span>drop shadow (px): <textarea id="shadowOutput" class = "noresize" rows="1" cols="10">2</textarea></span>
+    
+    <br>
+
+    <span class="slidecontainer">
+      <input type="range" min="0" max="20" value="3" id="blurSlider">
+    </span>
+    <span>shadow blur (px): <textarea id="blurOutput" class = "noresize" rows="1" cols="10">2</textarea></span>
+
+    <br>
+
+    <span>font: <select id="font">
+      <option value='"comicsans"'>comic sans</option>
+      <option value='"shibwritingregular"'>shibwriting</option>
+      <option value='"Courier New", monospace'>courier new</option>
+      <option value='"Times New Roman, serif'>times new roman</option>
+      <option value='Arial, sans-serif'>arial</option>
+    </select></span>
+
+    <div class="spacer">------------------------------------------------------------------------</div>
+
+    <span id = "bgColorSpan">bg color: <input type="color" id="bgColor" value="#ffffff"/></span>
+    <span id="bgGradient" style="display: none;">bg colors: 
+      <input type="color" id="bgColors1" value="#ffdede"/>
+      <input type="color" id="bgColors2" value="#fffcde"/>
+      <input type="color" id="bgColors3" value="#deffdf"/>
+      <input type="color" id="bgColors4" value="#dedeff"/>
+    </span>
+
+    <br>
+
+    <span>bg gradients: </span><input type="checkbox" id="bgGradientCheck" style="transform: scale(1.5);" checked/>
+    
+    <br>
+
+    <span>paper bg: </span><input type="checkbox" id="paperCheck" style="transform: scale(1.5);" checked/>
+    
+    <br>
+
+    <span class="slidecontainer">
+      <input type="range" min="0" max="20" value="15" id="bgGradientSlider">
+    </span>
+    <span>bg gradient speed (s): <textarea id="bgGradientOutput" class = "noresize" rows="1" cols="10">15</textarea></span>
+  </div>
+  <div id="showSettings">
+    <button onclick="showSettings()">show settings</button>
+  </div>
+  <script src="./script.js"></script>
+</body>
+</html>

@@ -1,0 +1,140 @@
+:root {
+  --randomX: 0%; 
+  --randomY: 0%; 
+  --negativeX: 0%; 
+  --negativeY: 0%; 
+  --xWobble: 5%;
+  --yWobble: 5%;
+  --xScale: 5%;
+  --yScale: 5%;
+  --shadow: 3px;
+  --shadowBlur: 3px;
+  --shadowColor: #000;
+  --animLength: 1s;
+  --color1: red;
+  --color2: yellow;
+  --color3: lime;
+  --color4: blue;
+  --bgColor1: #ffdede;
+  --bgColor2: #fffcde;
+  --bgColor3: #deffdf;
+  --bgColor4: #dedeff;
+  --gradientLength: 5s;
+  --bgGradientLength: 15s;
+  --font: 'comicsans';
+  --fontSize: 80px;
+  --rotation: 0;
+  --negativeRot: 0;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+@font-face {
+  font-family: comicsans;
+  src: url('comic sans/comic_sans_ms-webfont.woff2') format('woff2'),
+       url('comic sans/comic_sans_ms-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: shibwritingregular;
+  src: url('shibwriting/shibwriting2-regular-webfont.woff2') format('woff2'),
+       url('shibwriting/shibwriting2-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  font-family: var(--font);
+}
+
+.wobblecontainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  text-align: center;
+  pointer-events: none;
+}
+.wobble {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  background-clip: text;
+  background-image: linear-gradient(-45deg, var(--color1), var(--color2), var(--color3), var(--color4));
+  background-size: 400% 400%;
+  animation: gradient var(--gradientLength) ease infinite;;
+}
+.wobbletext {
+  font-size: var(--fontSize);
+  filter: drop-shadow(var(--shadow) var(--shadow) var(--shadowBlur) var(--shadowColor));
+}
+
+.overlay {
+  position: fixed;
+  opacity: 0.25; 
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: -1; 
+}
+
+body {
+  background-image: linear-gradient(-45deg, var(--bgColor1), var(--bgColor2), var(--bgColor3), var(--bgColor4));
+  background-size: 400% 400%;
+  animation: gradient var(--bgGradientLength) ease infinite;
+}
+
+textarea {
+  font-size: 1.3rem;
+  white-space: pre-wrap;
+}
+span{
+  font-size: 1.3rem;
+}
+
+.spacer {
+  height: 20px;
+}
+
+button, select {
+  font-size: 1.3rem;
+}
+
+.noresize {
+  resize: none;
+}
+
+@keyframes wobb {
+  0%, 100% {transform: translate(0%, 0%) rotate(0);}
+  25% {transform: translate(var(--xWobble), var(--yWobble)) rotate(var(--rotation)) scale(var(--xScale), var(--yScale));}
+  50% {transform: translate(var(--randomX), var(--randomY)) rotate(0);}
+  75% {transform: translate(var(--xWobble), var(--yWobble)) rotate(var(--negativeRot)) scale(var(--xScale), var(--yScale));}
+}
+
+.wobble span {
+  animation-name: wobb;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  animation-duration: var(--animLength);
+  display: inline-block;
+  transform: translate(0px) rotate(0);
+}
