@@ -96,7 +96,7 @@ function animateLerp(oldX, newX, oldY, newY, duration) {
 
 var xSlider = document.getElementById("xSlider");
 var xOutput = document.getElementById("xOutput");
-xOutput.value = xSlider.value;
+xSlider.value = xOutput.value;
 root.style.setProperty('--xWobble', xSlider.value + "%");
 
 xSlider.oninput = function() {
@@ -111,7 +111,7 @@ xOutput.oninput = function() {
 
 var ySlider = document.getElementById("ySlider");
 var yOutput = document.getElementById("yOutput");
-yOutput.value = ySlider.value;
+ySlider.value = yOutput.value;
 root.style.setProperty('--yWobble', ySlider.value + "%");
 
 ySlider.oninput = function() {
@@ -126,7 +126,7 @@ yOutput.oninput = function() {
 
 var xScaleSlider = document.getElementById("xScaleSlider");
 var xScaleOutput = document.getElementById("xScaleOutput");
-xScaleOutput.value = xScaleSlider.value;
+xScaleSlider.value = xScaleOutput.value;
 root.style.setProperty('--xScale', xScaleSlider.value);
 
 xScaleSlider.oninput = function() {
@@ -141,7 +141,7 @@ xScaleOutput.oninput = function() {
 
 var yScaleSlider = document.getElementById("yScaleSlider");
 var yScaleOutput = document.getElementById("yScaleOutput");
-yScaleOutput.value = yScaleSlider.value;
+yScaleSlider.value = yScaleOutput.value;
 root.style.setProperty('--yScale', yScaleSlider.value);
 
 yScaleSlider.oninput = function() {
@@ -156,7 +156,7 @@ yScaleOutput.oninput = function() {
 
 var rotSlider = document.getElementById("rotSlider");
 var rotOutput = document.getElementById("rotOutput");
-rotOutput.value = rotSlider.value;
+rotSlider.value = rotOutput.value;
 root.style.setProperty('--rotation', rotSlider.value + "deg");
 root.style.setProperty('--negativeRot', -(rotSlider.value) + "deg");
 
@@ -197,7 +197,7 @@ randOutput.oninput = function() {
 
 var delaySlider = document.getElementById("delaySlider");
 var delayOutput = document.getElementById("delayOutput");
-delayOutput.value = delaySlider.value;
+delaySlider.value = delayOutput.value;
 delayLength = delaySlider.value;
 
 delaySlider.oninput = function() {
@@ -214,7 +214,7 @@ delayOutput.oninput = function() {
 
 var lengthSlider = document.getElementById("lengthSlider");
 var lengthOutput = document.getElementById("lengthOutput");
-lengthOutput.value = lengthSlider.value;
+lengthSlider.value = lengthOutput.value;
 root.style.setProperty('--animLength', lengthSlider.value + "s");
 
 lengthSlider.oninput = function() {
@@ -295,7 +295,7 @@ colors4.oninput = changeColors;
 
 var gradientSlider = document.getElementById("gradientSlider");
 var gradientOutput = document.getElementById("gradientOutput");
-gradientOutput.value = gradientSlider.value;
+gradientSlider.value = gradientOutput.value;
 root.style.setProperty('--gradientLength', gradientSlider.value + "s");
 
 gradientSlider.oninput = function() {
@@ -367,7 +367,7 @@ bgColors4.oninput = changebgColors;
 
 var bgGradientSlider = document.getElementById("bgGradientSlider");
 var bgGradientOutput = document.getElementById("bgGradientOutput");
-bgGradientOutput.value = bgGradientSlider.value;
+bgGradientSlider.value = bgGradientOutput.value;
 root.style.setProperty('--bgGradientLength', bgGradientSlider.value + "s");
 
 bgGradientSlider.oninput = function() {
